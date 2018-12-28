@@ -1,0 +1,29 @@
+*** Settings ***
+Library           SeleniumLibrary
+
+*** Variables ***
+${orangeHrmUrl}    https://opensource-demo.orangehrmlive.com/
+@{Creds}          Admin    admin123
+&{Creds2}         Username=Admin    Password=admin123
+
+*** Test Cases ***
+TC1-RunChrome
+    Open Browser    https://robotframework.org    chrome
+    Close Browser
+
+TC2-RunFirefox
+    Open Browser    https://robotframework.org    firefox
+    Close Browser
+
+TC3-LoginWithList
+    Open Browser    ${orangeHrmUrl}    chrome
+    Input Text    id=txtUsername    @{Creds}[0]
+    Input Password    id=txtPassword    @{Creds}[1]
+    Close Browser
+
+TC4-LoginWithDictionary
+    Open Browser    ${orangeHrmUrl}    chrome
+    Input Text    id=txtUsername    &{Creds2}[Username]
+    Input Password    id=txtPassword    &{Creds2}[Password]
+    Close Browser
+    Log To Console    %{username} executed this testcase on %{os} OS.
