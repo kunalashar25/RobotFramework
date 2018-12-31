@@ -27,3 +27,13 @@ TC4-LoginWithDictionary
     Input Password    id=txtPassword    &{Creds2}[Password]
     Close Browser
     Log To Console    %{username} executed this testcase on %{os} OS.
+
+TC%-LoginWithUserKeyword
+    Open Browser    ${orangeHrmUrl}    chrome
+    LoginKeyword
+    Close Browser
+
+*** Keywords ***
+LoginKeyword
+    Input Text    id=txtUsername    @{Creds}[0]
+    Input Password    id=txtPassword    @{Creds}[1]
