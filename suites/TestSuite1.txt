@@ -37,6 +37,14 @@ TC5-LoginWithUserKeyword
     Close Browser
     [Teardown]    Log To Console    TC5 Completed
 
+TC6-WorkingWithTags
+    [Tags]    TC6
+    Log To Console    TC6 Started
+    Log To Console    Executing TC6
+    Log To Console    TC6 Ended
+    Set Tags    Sanity
+    Remove Tags    Sanity
+
 *** Keywords ***
 LoginKeyword
     Input Text    id=txtUsername    @{Creds}[0]
