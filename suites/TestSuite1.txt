@@ -1,4 +1,6 @@
 *** Settings ***
+Test Setup        Log To Console    Suite Started
+Test Teardown     Log To Console    Suite Execution Completed
 Library           SeleniumLibrary
 
 *** Variables ***
@@ -28,10 +30,12 @@ TC4-LoginWithDictionary
     Close Browser
     Log To Console    %{username} executed this testcase on %{os} OS.
 
-TC%-LoginWithUserKeyword
+TC5-LoginWithUserKeyword
+    [Setup]    Log To Console    TC5 Started
     Open Browser    ${orangeHrmUrl}    chrome
     LoginKeyword
     Close Browser
+    [Teardown]    Log To Console    TC5 Completed
 
 *** Keywords ***
 LoginKeyword
